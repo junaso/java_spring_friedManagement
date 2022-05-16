@@ -199,17 +199,5 @@ public class PersonControllerTest {
                 .andExpect(jsonPath("$.message").value("PersonEntityがありません。"));
     }
 
-    @Test
-    void modifyName() throws Exception {
-        PersonDto dto = new PersonDto();
-
-        mockMvc.perform(
-                MockMvcRequestBuilders.patch("/api/person/1")
-                        .param("name", "martinModified"))
-                .andExpect(status().isOk());
-
-        assertThat(personRepository.findById(1L).get().getName()).isEqualTo("martinModified");
-    }
-
   
 }
